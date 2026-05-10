@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KEMM'S KITCHEN | 守口市の燻製料理とワイン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0e0c0a;
+  --charcoal: #1c1916;
+  --smoke: #2e2a25;
+  --amber: #c97d2e;
+  --amber-light: #e8a84e;
+  --ember: #8b3a10;
+  --cream: #f0e8d8;
+  --cream-dark: #d4c9b0;
+  --white: #faf6ef;
+  --text-dim: rgba(240,232,216,0.5);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background:var(--black);
+  color:var(--cream);
+  font-family:'Noto Sans JP', sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:100;
+  background:rgba(14,12,10,0.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(201,125,46,0.2);
+}
+.nav-inner {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 48px;
+}
+.nav-logo {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:22px;
+  letter-spacing:4px;
+  color:var(--amber);
+  text-decoration:none;
+}
+.nav-right {
+  display:flex;
+  align-items:center;
+  gap:36px;
+}
+.nav-links {
+  display:flex;
+  gap:28px;
+  list-style:none;
+}
+.nav-links a {
+  color:rgba(240,232,216,0.6);
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  transition:color 0.3s;
+  border-bottom:1px solid transparent;
+  padding-bottom:2px;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color:var(--amber);
+  border-bottom-color:var(--amber);
+}
+.nav-reserve {
+  background:var(--amber);
+  color:var(--black);
+  padding:8px 20px;
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-weight:700;
+  text-decoration:none;
+  transition:background 0.3s;
+}
+.nav-reserve:hover { background:var(--amber-light); }
+.nav-progress {
+  height:2px;
+  background:rgba(255,255,255,0.04);
+}
+.nav-progress-bar {
+  height:100%;
+  background:linear-gradient(90deg, var(--ember), var(--amber));
+  width:0%;
+  transition:width 0.1s linear;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;
+  overflow:hidden;
+}
+.hero-left {
+  background:var(--charcoal);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:120px 56px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-left::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse 80% 60% at 20% 80%, rgba(139,58,16,0.3) 0%, transparent 60%);
+}
+.hero-eyebrow {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:11px;
+  letter-spacing:6px;
+  color:var(--amber);
+  margin-bottom:24px;
+  position:relative;
+  animation:fadeUp 0.8s ease both;
+}
+.hero-eyebrow::before {
+  content:'';
+  display:inline-block;
+  width:32px;
+  height:1px;
+  background:var(--amber);
+  margin-right:12px;
+  vertical-align:middle;
+}
+.hero h1 {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:clamp(64px, 9vw, 120px);
+  line-height:0.9;
+  letter-spacing:2px;
+  color:var(--white);
+  margin-bottom:32px;
+  position:relative;
+  animation:fadeUp 0.8s 0.15s ease both;
+}
+.hero h1 span {
+  display:block;
+  color:var(--amber);
+}
+.hero-desc {
+  font-size:14px;
+  line-height:2;
+  color:var(--text-dim);
+  max-width:360px;
+  margin-bottom:48px;
+  position:relative;
+  animation:fadeUp 0.8s 0.3s ease both;
+}
+.hero-cta {
+  display:flex;
+  gap:16px;
+  animation:fadeUp 0.8s 0.45s ease both;
+  position:relative;
+}
+.btn-primary {
+  background:var(--amber);
+  color:var(--black);
+  padding:14px 32px;
+  font-size:12px;
+  letter-spacing:3px;
+  font-weight:700;
+  text-decoration:none;
+  text-transform:uppercase;
+  display:inline-block;
+  transition:background 0.3s, transform 0.2s;
+}
+.btn-primary:hover { background:var(--amber-light); transform:translateY(-2px); }
+.btn-ghost {
+  border:1px solid rgba(240,232,216,0.3);
+  color:var(--cream);
+  padding:14px 32px;
+  font-size:12px;
+  letter-spacing:3px;
+  text-decoration:none;
+  text-transform:uppercase;
+  display:inline-block;
+  transition:border-color 0.3s;
+}
+.btn-ghost:hover { border-color:var(--amber); color:var(--amber); }
+
+.hero-right {
+  background:var(--smoke);
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  overflow:hidden;
+}
+.hero-right::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 80% 30%, rgba(201,125,46,0.15) 0%, transparent 60%),
+    linear-gradient(180deg, transparent 40%, rgba(14,12,10,0.6) 100%);
+}
+.hero-img-placeholder {
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+.smoke-text {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:clamp(100px, 16vw, 200px);
+  color:rgba(255,255,255,0.03);
+  line-height:1;
+  user-select:none;
+  pointer-events:none;
+  letter-spacing:4px;
+}
+.hero-badge {
+  position:absolute;
+  bottom:40px;
+  right:40px;
+  width:100px;
+  height:100px;
+  border:1px solid rgba(201,125,46,0.4);
+  border-radius:50%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  animation:rotateBadge 20s linear infinite;
+}
+.hero-badge-text {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:11px;
+  letter-spacing:2px;
+  color:var(--amber);
+  line-height:1.4;
+}
+@keyframes rotateBadge {
+  from { transform:rotate(0deg); }
+  to { transform:rotate(360deg); }
+}
+.hero-weekly {
+  padding:28px 40px;
+  border-top:1px solid rgba(255,255,255,0.06);
+  position:relative;
+  z-index:2;
+}
+.weekly-label {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:11px;
+  letter-spacing:4px;
+  color:var(--amber);
+  margin-bottom:8px;
+}
+.weekly-menu {
+  font-family:'Playfair Display', serif;
+  font-size:18px;
+  color:var(--white);
+  font-style:italic;
+}
+
+/* ===== CONCEPT ===== */
+.concept {
+  padding:140px 48px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:100px;
+  align-items:center;
+  background:var(--charcoal);
+  position:relative;
+  overflow:hidden;
+}
+.concept::before {
+  content:'SMOKE';
+  position:absolute;
+  left:-60px;
+  top:50%;
+  transform:translateY(-50%) rotate(-90deg);
+  font-family:'Bebas Neue', sans-serif;
+  font-size:180px;
+  color:rgba(255,255,255,0.02);
+  white-space:nowrap;
+  pointer-events:none;
+}
+.concept-tag {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:11px;
+  letter-spacing:5px;
+  color:var(--amber);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:24px;
+}
+.concept-tag::before {
+  content:'';
+  width:40px;
+  height:1px;
+  background:var(--amber);
+}
+.concept h2 {
+  font-family:'Playfair Display', serif;
+  font-size:clamp(32px, 4vw, 52px);
+  line-height:1.3;
+  color:var(--white);
+  margin-bottom:32px;
+}
+.concept h2 em {
+  font-style:italic;
+  color:var(--amber-light);
+}
+.concept p {
+  font-size:14px;
+  line-height:2.4;
+  color:var(--text-dim);
+  margin-bottom:16px;
+}
+.concept-numbers {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  margin-top:48px;
+}
+.concept-num {
+  background:var(--smoke);
+  padding:24px 20px;
+  text-align:center;
+}
+.num-value {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:44px;
+  color:var(--amber);
+  line-height:1;
+  display:block;
+}
+.num-label {
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--text-dim);
+  margin-top:8px;
+  display:block;
+}
+.concept-visual {
+  position:relative;
+}
+.concept-block {
+  background:var(--smoke);
+  aspect-ratio:4/5;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.concept-block::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, rgba(201,125,46,0.15) 0%, transparent 50%);
+}
+.concept-block-inner {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:80px;
+  color:rgba(255,255,255,0.04);
+  letter-spacing:4px;
+  text-align:center;
+  line-height:1;
+}
+.concept-accent {
+  position:absolute;
+  bottom:-20px;
+  right:-20px;
+  width:140px;
+  height:140px;
+  border:2px solid rgba(201,125,46,0.3);
+}
+
+/* ===== MENU ===== */
+.menu-section {
+  padding:140px 0;
+  background:var(--black);
+  overflow:hidden;
+}
+.menu-header {
+  padding:0 48px;
+  margin-bottom:72px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+}
+.menu-header-left {}
+.menu-tag {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:11px;
+  letter-spacing:5px;
+  color:var(--amber);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:16px;
+}
+.menu-tag::before {
+  content:'';
+  width:40px;
+  height:1px;
+  background:var(--amber);
+}
+.menu-header h2 {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:clamp(48px, 6vw, 80px);
+  letter-spacing:2px;
+  color:var(--white);
+  line-height:0.95;
+}
+.menu-header p {
+  font-size:13px;
+  color:var(--text-dim);
+  max-width:280px;
+  line-height:2;
+  text-align:right;
+}
+
+/* 横スクロールメニュー */
+.menu-scroll {
+  display:flex;
+  gap:2px;
+  padding:0 48px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.menu-scroll::-webkit-scrollbar { display:none; }
+.menu-item {
+  flex-shrink:0;
+  width:280px;
+  background:var(--charcoal);
+  padding:40px 32px;
+  position:relative;
+  overflow:hidden;
+  transition:background 0.3s;
+  cursor:pointer;
+}
+.menu-item:hover { background:var(--smoke); }
+.menu-item::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:2px;
+  background:var(--amber);
+  transform:scaleX(0);
+  transition:transform 0.3s;
+}
+.menu-item:hover::before { transform:scaleX(1); }
+.menu-cat {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:10px;
+  letter-spacing:4px;
+  color:var(--amber);
+  margin-bottom:16px;
+}
+.menu-item h3 {
+  font-family:'Playfair Display', serif;
+  font-size:20px;
+  color:var(--white);
+  margin-bottom:12px;
+  line-height:1.4;
+}
+.menu-item p {
+  font-size:12px;
+  color:var(--text-dim);
+  line-height:2;
+  margin-bottom:28px;
+}
+.menu-price {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:32px;
+  color:var(--amber);
+  letter-spacing:1px;
+}
+.menu-price span {
+  font-size:14px;
+  color:var(--text-dim);
+  font-family:'Noto Sans JP', sans-serif;
+  letter-spacing:0;
+}
+.menu-num {
+  position:absolute;
+  bottom:20px;
+  right:24px;
+  font-family:'Bebas Neue', sans-serif;
+  font-size:80px;
+  color:rgba(255,255,255,0.03);
+  line-height:1;
+}
+
+/* ===== WEEKLY ===== */
+.weekly {
+  padding:100px 48px;
+  background:var(--amber);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.weekly-left {}
+.weekly-eyebrow {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:11px;
+  letter-spacing:5px;
+  color:var(--black);
+  opacity:0.6;
+  margin-bottom:16px;
+}
+.weekly h2 {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:clamp(48px, 6vw, 80px);
+  color:var(--black);
+  line-height:0.9;
+  margin-bottom:24px;
+  letter-spacing:2px;
+}
+.weekly p {
+  font-size:14px;
+  color:rgba(14,12,10,0.7);
+  line-height:2.2;
+  margin-bottom:32px;
+}
+.weekly-cta {
+  background:var(--black);
+  color:var(--amber);
+  padding:14px 32px;
+  font-size:11px;
+  letter-spacing:3px;
+  font-weight:700;
+  text-decoration:none;
+  text-transform:uppercase;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  transition:opacity 0.3s;
+}
+.weekly-cta:hover { opacity:0.8; }
+.weekly-right {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+}
+.weekly-card {
+  background:rgba(14,12,10,0.12);
+  padding:24px 20px;
+}
+.weekly-day {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:10px;
+  letter-spacing:3px;
+  color:rgba(14,12,10,0.5);
+  margin-bottom:8px;
+}
+.weekly-dish {
+  font-family:'Playfair Display', serif;
+  font-size:16px;
+  color:var(--black);
+  line-height:1.4;
+  font-style:italic;
+}
+
+/* ===== ACCESS ===== */
+.access {
+  padding:140px 48px;
+  background:var(--charcoal);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:start;
+}
+.access-tag {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:11px;
+  letter-spacing:5px;
+  color:var(--amber);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:24px;
+}
+.access-tag::before {
+  content:'';
+  width:40px;
+  height:1px;
+  background:var(--amber);
+}
+.access h2 {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:56px;
+  color:var(--white);
+  letter-spacing:2px;
+  line-height:0.9;
+  margin-bottom:48px;
+}
+.access-list {
+  list-style:none;
+}
+.access-list li {
+  display:flex;
+  gap:20px;
+  padding:18px 0;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  font-size:13px;
+}
+.access-list li:last-child { border-bottom:none; }
+.access-key {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:11px;
+  letter-spacing:3px;
+  color:var(--amber);
+  min-width:64px;
+  padding-top:2px;
+}
+.access-val { color:var(--cream-dark); line-height:1.8; }
+.map-box {
+  background:var(--smoke);
+  aspect-ratio:4/3;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  border:1px solid rgba(255,255,255,0.06);
+  color:rgba(240,232,216,0.3);
+  font-size:12px;
+  letter-spacing:2px;
+}
+.map-box-icon { font-size:28px; opacity:0.3; }
+
+/* ===== INSTAGRAM ===== */
+.instagram-section {
+  padding:100px 48px;
+  background:var(--black);
+  text-align:center;
+}
+.ig-tag {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:11px;
+  letter-spacing:5px;
+  color:var(--amber);
+  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
+.ig-tag::before, .ig-tag::after {
+  content:'';
+  width:40px;
+  height:1px;
+  background:var(--amber);
+}
+.instagram-section h2 {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:clamp(48px, 6vw, 80px);
+  color:var(--white);
+  letter-spacing:2px;
+  margin-bottom:16px;
+}
+.instagram-section p {
+  font-size:13px;
+  color:var(--text-dim);
+  margin-bottom:36px;
+}
+.ig-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid rgba(201,125,46,0.5);
+  color:var(--amber);
+  padding:14px 32px;
+  font-size:12px;
+  letter-spacing:3px;
+  text-decoration:none;
+  text-transform:uppercase;
+  transition:background 0.3s, border-color 0.3s;
+}
+.ig-btn:hover { background:rgba(201,125,46,0.1); border-color:var(--amber); }
+.ig-btn svg { width:16px; height:16px; fill:var(--amber); }
+
+/* ===== FOOTER ===== */
+footer {
+  background:var(--charcoal);
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding:60px 48px 32px;
+}
+.footer-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:48px;
+  padding-bottom:48px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.footer-logo {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:28px;
+  letter-spacing:4px;
+  color:var(--amber);
+}
+.footer-tagline {
+  font-size:11px;
+  color:var(--text-dim);
+  margin-top:8px;
+  letter-spacing:2px;
+}
+.footer-links {
+  list-style:none;
+  display:flex;
+  gap:28px;
+}
+.footer-links a {
+  color:var(--text-dim);
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  transition:color 0.3s;
+}
+.footer-links a:hover { color:var(--amber); }
+.footer-bottom {
+  font-size:11px;
+  color:rgba(240,232,216,0.2);
+  letter-spacing:1px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.reveal {
+  opacity:0;
+  transform:translateY(32px);
+  transition:opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px) {
+  .nav-inner { padding:14px 20px; }
+  .nav-links { display:none; }
+  .hero { grid-template-columns:1fr; }
+  .hero-right { display:none; }
+  .hero-left { padding:100px 24px 60px; }
+  .concept { grid-template-columns:1fr; padding:80px 24px; gap:48px; }
+  .concept-visual { display:none; }
+  .concept-numbers { grid-template-columns:repeat(3,1fr); }
+  .menu-section { padding:80px 0; }
+  .menu-header { padding:0 24px; flex-direction:column; align-items:flex-start; gap:16px; }
+  .menu-scroll { padding:0 24px; }
+  .weekly { grid-template-columns:1fr; padding:80px 24px; gap:40px; }
+  .access { grid-template-columns:1fr; padding:80px 24px; gap:40px; }
+  .instagram-section { padding:80px 24px; }
+  footer { padding:48px 24px 24px; }
+  .footer-top { flex-direction:column; gap:32px; }
+  .footer-links { flex-wrap:wrap; gap:16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">KEMM'S KITCHEN</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#concept" data-nav="concept">Concept</a></li>
+        <li><a href="#menu" data-nav="menu">Menu</a></li>
+        <li><a href="#weekly" data-nav="weekly">Weekly</a></li>
+        <li><a href="#access" data-nav="access">Access</a></li>
+      </ul>
+      <a href="#access" class="nav-reserve">Reserve</a>
+    </div>
+  </div>
+  <div class="nav-progress">
+    <div class="nav-progress-bar" id="progressBar"></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Smoked Kitchen — Moriguchi, Osaka</div>
+    <h1>
+      SMOKE.<br>
+      <span>SAVOR.</span><br>
+      REPEAT.
+    </h1>
+    <p class="hero-desc">
+      守口市で唯一、本格燻製料理とワインが楽しめるダイニングバー。
+      週替わりのメインプレートで、毎週新しい出会いをお届けします。
+    </p>
+    <div class="hero-cta">
+      <a href="#menu" class="btn-primary">Menu を見る</a>
+      <a href="#access" class="btn-ghost">Access</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      <div class="smoke-text">KEMM</div>
+      <div class="hero-badge">
+        <div class="hero-badge-text">WEEKLY<br>MENU<br>UPDATE</div>
+      </div>
+    </div>
+    <div class="hero-weekly">
+      <div class="weekly-label">Today's Special</div>
+      <div class="weekly-menu">自家製燻製ローストビーフプレート</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="concept" id="concept">
+  <div class="concept-text reveal">
+    <div class="concept-tag">Concept</div>
+    <h2>煙が引き出す、<br><em>本物の旨さ。</em></h2>
+    <p>
+      店内に鎮座する大型燻製器から漂うスモークの香りが、
+      KEMM'S KITCHENの顔です。
+      ローストビーフ、豚バラ、チキン——素材を選び、
+      時間をかけて燻すことで生まれる深い味わいは、
+      どこにもない一皿になります。
+    </p>
+    <p>
+      ランチはボリュームたっぷりのプレートで。
+      ディナーはワインとともに燻製料理をゆっくりと。
+      どちらの顔も持つ、守口の隠れ家的一軒です。
+    </p>
+    <div class="concept-numbers">
+      <div class="concept-num">
+        <span class="num-value">4.3</span>
+        <span class="num-label">LINE評価</span>
+      </div>
+      <div class="concept-num">
+        <span class="num-value">S/M/L</span>
+        <span class="num-label">サイズ選択</span>
+      </div>
+      <div class="concept-num">
+        <span class="num-value">毎週</span>
+        <span class="num-label">メニュー更新</span>
+      </div>
+    </div>
+  </div>
+  <div class="concept-visual reveal">
+    <div class="concept-block">
+      <div class="concept-block-inner">SMOKE<br>& WINE</div>
+    </div>
+    <div class="concept-accent"></div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="menu-header reveal">
+    <div class="menu-header-left">
+      <div class="menu-tag">Menu</div>
+      <h2>SIGNATURE<br>DISHES</h2>
+    </div>
+    <p>すべてのメニューに<br>自家製燻製の技が宿っています</p>
+  </div>
+  <div class="menu-scroll">
+    <div class="menu-item">
+      <div class="menu-cat">Lunch — Signature</div>
+      <h3>燻製ローストビーフ<br>プレート</h3>
+      <p>自家製燻製ソースをたっぷりかけた看板メニュー。副菜・ミニデザート付き。</p>
+      <div class="menu-price">¥980 <span>〜 / Mサイズ</span></div>
+      <div class="menu-num">01</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-cat">Lunch — Weekly</div>
+      <h3>週替わり<br>メインプレート</h3>
+      <p>毎週変わる旬のメイン。Instagramで毎週月曜日に更新。S・M・Lサイズ対応。</p>
+      <div class="menu-price">¥780 <span>〜 / Sサイズ</span></div>
+      <div class="menu-num">02</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-cat">Takeout</div>
+      <h3>テイクアウト<br>ボックス</h3>
+      <p>ローストビーフ・キーマカレー・ハンバーグの3種。電話予約で待ち時間なし。</p>
+      <div class="menu-price">¥780 <span>〜</span></div>
+      <div class="menu-num">03</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-cat">Dinner</div>
+      <h3>燻製盛り合わせ<br>プレート</h3>
+      <p>その日の燻製料理を一皿に。ワインとの相性を考え抜いた組み合わせ。</p>
+      <div class="menu-price">¥1,800 <span>〜</span></div>
+      <div class="menu-num">04</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-cat">Drink</div>
+      <h3>ナチュラルワイン<br>セレクション</h3>
+      <p>燻製料理に合わせてセレクトしたナチュラルワイン。グラス・ボトル対応。</p>
+      <div class="menu-price">¥650 <span>〜 / グラス</span></div>
+      <div class="menu-num">05</div>
+    </div>
+  </div>
+</section>
+
+<!-- WEEKLY -->
+<section class="weekly" id="weekly">
+  <div class="weekly-left reveal">
+    <div class="weekly-eyebrow">Weekly Update</div>
+    <h2>TODAY'S<br>PLATE</h2>
+    <p>
+      毎週変わる週替わりプレートは、
+      旬の食材と燻製の組み合わせを追求した
+      シェフこだわりの一皿です。
+      Instagramで毎週月曜日に更新しています。
+    </p>
+    <a href="https://www.instagram.com/kemms_kitchen/" target="_blank" class="weekly-cta">
+      Instagramで最新メニューを見る ▶
+    </a>
+  </div>
+  <div class="weekly-right reveal">
+    <div class="weekly-card">
+      <div class="weekly-day">Today's Main</div>
+      <div class="weekly-dish">三元豚ヒレカツ<br>胡麻味噌ソース</div>
+    </div>
+    <div class="weekly-card">
+      <div class="weekly-day">Coming Soon</div>
+      <div class="weekly-dish">次週は<br>Instagramで公開</div>
+    </div>
+    <div class="weekly-card">
+      <div class="weekly-day">Size</div>
+      <div class="weekly-dish">S / M / L<br>お好みで選択</div>
+    </div>
+    <div class="weekly-card">
+      <div class="weekly-day">Option</div>
+      <div class="weekly-dish">+¥150で<br>コーヒー or 紅茶</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section class="access" id="access">
+  <div class="reveal">
+    <div class="access-tag">Access</div>
+    <h2>FIND<br>US</h2>
+    <ul class="access-list">
+      <li>
+        <span class="access-key">住所</span>
+        <span class="access-val">大阪府守口市京阪本通2丁目8-2</span>
+      </li>
+      <li>
+        <span class="access-key">電話</span>
+        <span class="access-val">06-6991-8290</span>
+      </li>
+      <li>
+        <span class="access-key">ランチ</span>
+        <span class="access-val">11:00〜14:00<br>月・火・木・金・土</span>
+      </li>
+      <li>
+        <span class="access-key">アクセス</span>
+        <span class="access-val">守口車庫前 すぐ / 京阪本通沿い<br>レンガ×ネイビーブルーの外観が目印</span>
+      </li>
+      <li>
+        <span class="access-key">定休日</span>
+        <span class="access-val">水曜・日曜</span>
+      </li>
+    </ul>
+  </div>
+  <div class="reveal">
+    <div class="map-box">
+      <div class="map-box-icon">📍</div>
+      <div>Googleマップを埋め込み予定</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="instagram-section" id="instagram">
+  <div class="ig-tag">Instagram</div>
+  <h2 class="reveal">@KEMMS_KITCHEN</h2>
+  <p class="reveal">週替わりメニューや燻製料理の最新情報はInstagramで</p>
+  <a href="https://www.instagram.com/kemms_kitchen/" target="_blank" class="ig-btn reveal">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+    </svg>
+    Follow on Instagram
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">KEMM'S KITCHEN</div>
+      <div class="footer-tagline">Smoked Kitchen & Wine Bar — Moriguchi, Osaka</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#concept">Concept</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#weekly">Weekly</a></li>
+      <li><a href="#access">Access</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">© 2026 KEMM'S KITCHEN All Rights Reserved.</div>
+</footer>
+
+<script>
+// Progress bar
+const progressBar = document.getElementById('progressBar');
+function updateProgress() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+}
+
+// Nav active
+const sections = ['hero','concept','menu','weekly','access'];
+const navLinks = document.querySelectorAll('.nav-links a[data-nav]');
+function updateNav() {
+  let current = 'hero';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) current = id;
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.dataset.nav === current);
+  });
+}
+
+window.addEventListener('scroll', () => {
+  updateProgress();
+  updateNav();
+}, { passive:true });
+updateProgress();
+updateNav();
+
+// Reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 100);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold:0.1 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
